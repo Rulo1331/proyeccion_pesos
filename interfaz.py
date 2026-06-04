@@ -38,7 +38,7 @@ def construir_fila(pesos_completos, dia_target, sexo, galpon, granja):
 
 # --- INTERFAZ STREAMLIT ---
 st.title("🐔 Panel de Proyección de Peso en Cascada")
-st.markdown("Estime el crecimiento de su lote mediante modelos de Machine Learning.")
+st.markdown("Ingenieria de Procesos")
 
 # Sidebar - Parámetros fijos
 st.sidebar.header("⚙️ Configuración del Lote")
