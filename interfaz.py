@@ -37,7 +37,7 @@ def construir_fila(pesos_completos, dia_target, sexo, galpon, granja):
     return pd.DataFrame([row])
 
 # --- INTERFAZ STREAMLIT ---
-st.title("🐔 Panel de Proyección de Peso en Cascada")
+st.title("🐔 EL ROCIO - Proyeccion de Peso")
 st.markdown("Ingenieria de Procesos")
 
 # Sidebar - Parámetros fijos
