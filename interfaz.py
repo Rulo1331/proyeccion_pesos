@@ -123,4 +123,12 @@ if st.button("🚀 Generar Proyección", type="primary"):
     st.plotly_chart(fig, use_container_width=True)
 
     # Tabla de Datos
-    st.table(df_res.style.format("{:.1f}").map(lambda x: 'color: red' if isinstance(x, float) and x < 0 else 'color: black', subset=['Margen']))
+    st.table(
+    df_res.style
+    .format({
+        'Peso': '{:.1f}', 
+        'Margen': '{:.1f}', 
+        'Std': '{:.1f}'
+    })
+    .map(lambda x: 'color: red' if isinstance(x, (int, float)) and x < 0 else 'color: black', subset=['Margen'])
+)
