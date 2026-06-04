@@ -44,7 +44,13 @@ st.markdown("Ingenieria de Procesos")
 st.sidebar.header("⚙️ Configuración del Lote")
 sexo = st.sidebar.selectbox("Sexo del Lote", ["M", "H"], help="M: Macho, H: Hembra")
 galpon = st.sidebar.number_input("Número de Galpón", min_value=1, value=1)
-granja = st.sidebar.number_input("ID Granja (Encoding)", min_value=0, value=2)
+
+# En la barra lateral
+nombres_granjas = {"SEMIA": 0, "NUC-9": 1, "AVICOLA_X": 2} # Tu diccionario de encoding
+seleccion_granja = st.sidebar.selectbox("Seleccione la Granja", options=list(nombres_granjas.keys()))
+granja = nombres_granjas[seleccion_granja] # Esto envía el número correcto al modelo
+
+#granja = st.sidebar.number_input("ID Granja", min_value=0, value=2)
 
 # Sección de entrada de datos reales
 st.subheader("📝 Pesos Reales Medidos")
