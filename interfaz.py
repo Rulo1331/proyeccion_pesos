@@ -100,10 +100,10 @@ if st.button("🚀 Generar Proyección", type="primary"):
                     'Margen': pred - std, 'Std': std
                 }
                 pesos[dia_t] = pred
-                except Exception as e:
-                    st.error(f"Error en Día {dia_t}: {e}")
-                    import os
-                    st.write(f"Archivos presentes en el servidor: {os.listdir('.')}")
+            except Exception as e:
+                st.error(f"Error en Día {dia_t}: {e}")
+                import os
+                st.write(f"Archivos presentes en el servidor: {os.listdir('.')}")
 
     # --- RESULTADOS VISUALES ---
     df_res = pd.DataFrame(resultados).T
