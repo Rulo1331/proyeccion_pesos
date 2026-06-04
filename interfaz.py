@@ -46,7 +46,9 @@ sexo = st.sidebar.selectbox("Sexo del Lote", ["M", "H"], help="M: Macho, H: Hemb
 galpon = st.sidebar.number_input("Número de Galpón", min_value=1, value=1)
 
 # En la barra lateral
-nombres_granjas = {"SEMIA": 0, "NUC-9": 1, "AVICOLA_X": 2} # Tu diccionario de encoding
+nombres_granjas = {"507": 0, "ESMER": 1, "HARC2": 2, "MORI2" : 3, "NUC-9" : 4, "NUC-B" : 5, "PAC67" : 6, "PACI1" : 7, "PACI2" : 8, "PACI5" : 9, "PACI6" : 10, "PACI7" : 11, "QBAGA" : 12, "R4G-A" : 13, "R4G-B" : 14, "R4G-C" : 15,
+                  "SEMIA" : 16, "SEMIB" : 17, "SISA1" : 18, "SISA2" : 19, "SISA3" : 20, "TRAD1" : 21} # Diccionario Encoding de Granjas AEA
+
 seleccion_granja = st.sidebar.selectbox("Seleccione la Granja", options=list(nombres_granjas.keys()))
 granja = nombres_granjas[seleccion_granja] # Esto envía el número correcto al modelo
 
