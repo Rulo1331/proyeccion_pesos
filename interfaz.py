@@ -5,7 +5,7 @@ import joblib
 import plotly.graph_objects as go
 
 # --- CONFIGURACIÓN DE PÁGINA ---
-st.set_page_config(page_title="Predictor Avícola Pro", page_icon="🐔", layout="wide")
+st.set_page_config(page_title="Predictor Avícola", page_icon="🐔", layout="wide")
 
 # --- LÓGICA DE NEGOCIO (Tu código adaptado) ---
 STD_M = {0: 43, 4: 109, 7: 190, 10: 300, 14: 494, 21: 975, 28: 1606, 35: 2336}
