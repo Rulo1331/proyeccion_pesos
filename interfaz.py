@@ -8,8 +8,8 @@ import plotly.graph_objects as go
 st.set_page_config(page_title="Predictor Avícola Pro", page_icon="🐔", layout="wide")
 
 # --- LÓGICA DE NEGOCIO (Tu código adaptado) ---
-STD_M = {0: 43, 4: 109, 7: 175, 10: 270, 14: 520, 21: 900, 28: 1550, 35: 2120}
-STD_H = {0: 43, 4: 108, 7: 170, 10: 260, 14: 500, 21: 870, 28: 1480, 35: 2020}
+STD_M = {0: 43, 4: 109, 7: 190, 10: 300, 14: 494, 21: 975, 28: 1606, 35: 2336}
+STD_H = {0: 43, 4: 108, 7: 188, 10: 296, 14: 482, 21: 928, 28: 1491, 35: 2114}
 MAE_MODELO = {21: 42, 28: 47, 35: 77}
 DIAS_TODOS = [0, 4, 7, 10, 14, 21, 28, 35]
 DIAS_TARGETS = [21, 28, 35]
