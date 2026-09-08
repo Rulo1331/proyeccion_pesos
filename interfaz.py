@@ -98,6 +98,7 @@ def proyectar_lote(pesos: dict, sexo: str, granja: str, galpon: str, dia_actual:
         "Fuente": "Proyectado",
         "Std": round(std_t, 1),
         "Margen": round((pred_ratio - 1) * std_t, 1),
+        "% Std": round(pred_ratio * 100, 1),
         "lim_inf": round((pred_ratio - q) * std_t, 1),
         "lim_sup": round((pred_ratio + q) * std_t, 1),
         "prob_cumplir": round(prob_cumplir, 2),
@@ -157,6 +158,7 @@ if st.button("🚀 Generar Proyección", type="primary"):
     for d, p in pesos.items():
         std = std_dia(d, sexo)
         resultados[d] = {"Peso": p, "Fuente": "Real", "Margen": round(p - std, 1), "Std": round(std, 1),
+                          "% Std": round(p / std * 100, 1),
                           "lim_inf": None, "lim_sup": None, "prob_cumplir": None, "estado": ""}
 
     dias_a_proyectar = [dt for dt in DIAS_TARGET if dt > dia_actual and (dia_actual, dt) in bundle["modelos"]]
@@ -217,15 +219,17 @@ if st.button("🚀 Generar Proyección", type="primary"):
     st.plotly_chart(fig, use_container_width=True)
 
     # Tabla de Datos
-    cols_tabla = ["Fuente", "Peso", "Std", "Margen", "lim_inf", "lim_sup", "prob_cumplir", "estado"]
+    cols_tabla = ["Fuente", "Peso", "Std", "% Std", "Margen", "lim_inf", "lim_sup", "prob_cumplir", "estado"]
     st.table(
         df_res[cols_tabla]
         .rename(columns={"lim_inf": "Lím. Inf.", "lim_sup": "Lím. Sup.",
                           "prob_cumplir": "Prob. Cumplir", "estado": "Estado"})
         .style
         .format({"Peso": "{:.1f}", "Margen": "{:.1f}", "Std": "{:.1f}",
+                  "% Std": lambda x: f"{x:.1f}%" if pd.notna(x) else "",
                   "Lím. Inf.": lambda x: f"{x:.0f}" if pd.notna(x) else "",
                   "Lím. Sup.": lambda x: f"{x:.0f}" if pd.notna(x) else "",
                   "Prob. Cumplir": lambda x: f"{x*100:.0f}%" if pd.notna(x) else ""})
         .map(lambda x: "color: red" if isinstance(x, (int, float)) and x < 0 else "color: black", subset=["Margen"])
+        .map(lambda x: "color: red" if isinstance(x, (int, float)) and x < 100 else "color: green", subset=["% Std"])
     )
