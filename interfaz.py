@@ -158,7 +158,7 @@ if st.button("🚀 Generar Proyección", type="primary"):
     for d, p in pesos.items():
         std = std_dia(d, sexo)
         resultados[d] = {"Peso": p, "Fuente": "Real", "Margen": round(p - std, 1), "Std": round(std, 1),
-                          "% Std": round(p / std * 100, 1),
+                          "% Std": round((p / std) -1)*100, 1),
                           "lim_inf": None, "lim_sup": None, "prob_cumplir": None, "estado": ""}
 
     dias_a_proyectar = [dt for dt in DIAS_TARGET if dt > dia_actual and (dia_actual, dt) in bundle["modelos"]]
